@@ -1,11 +1,10 @@
 #!/usr/bin/env -S npx tsx
-import { spawn } from 'node:child_process'
+import { exec } from 'node:child_process'
 import fs from 'node:fs/promises'
 import path from 'node:path'
-
-import type { PathLike } from 'node:fs'
+import figlet from 'figlet'
 import npmFetch from 'npm-registry-fetch'
-import ora, { type Ora } from 'ora'
+import { type Ora, oraPromise } from 'ora'
 import semver from 'semver'
 import { simpleGit } from 'simple-git'
 
@@ -27,17 +26,12 @@ const StagedReadmePath = path.join(StagedPackagePath, ReadmeFile)
 
 const git = simpleGit()
 
+console.log(figlet.textSync('swagger-ui-scss'))
+
 type AsyncTask<T> = (spinner: Ora) => Promise<T>
 
 async function asyncTask<T>(title: string, task: AsyncTask<T>) {
-  const spinner = ora(title).start()
-
-  const result = await task(spinner)
-  if (spinner.isSpinning) {
-    spinner.succeed()
-  }
-
-  return result
+  return oraPromise(task, { text: title })
 }
 
 const [latestTagName, taggedVersion] = await asyncTask('Get latest tag from upstream', async spinner => {
@@ -183,17 +177,12 @@ await asyncTask('Creating swagger-ui-scss version to push', async spinner => {
   await fs.writeFile(StagedPackageJsonPath, JSON.stringify(packageContent, undefined, 2), 'utf-8')
 
   spinner.suffixText = ' - Installing dependencies'
-  const child = spawn('npm i', {
+  const child = exec('npm i', {
     cwd: StagedPackagePath,
+    env: process.env,
+    encoding: 'utf-8',
   })
   await new Promise<void>((resolve, reject) => {
-    child.stdout.on('data', x => {
-      process.stdout.write(x.toString())
-    })
-    child.stderr.on('data', x => {
-      process.stderr.write(x.toString())
-    })
-
     child.on('close', code => {
       if (code === 0) {
         resolve()
