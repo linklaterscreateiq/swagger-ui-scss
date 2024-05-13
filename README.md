@@ -13,7 +13,7 @@ Replace any import of the default Swagger UI CSS file with a reference to main.s
 
 ```diff
 - @import '~swagger-ui-react/swagger-ui.css';
-+ @import '~@createiq/swagger-ui-scss/main.scss';
++ @import '~@createiq/swagger-ui-scss/style/main.scss';
 ```
 
 Then you can override the [variables that are used internally by Swagger UI](https://github.com/swagger-api/swagger-ui/blob/master/src/style/_variables.scss):

@@ -172,10 +172,6 @@ await asyncTask('Creating swagger-ui-scss version to push', async spinner => {
     name: NpmPackageName,
     version: gitPackageFileContent.version,
     main: './style/main.scss',
-    exports: {
-      '.': './style/main.scss',
-      './main.scss': './style/main.scss',
-    },
     homepage: gitPackageFileContent.homepage,
     repository: { type: 'git', url: `git+${RepositoryUrl}` },
     contributors: [...gitPackageFileContent.contributors, 'Mathew Mannion <mathew.mannion@linklaters.com>'],
