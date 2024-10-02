@@ -20,7 +20,7 @@
     "figlet": "1.7.0",
     "husky": "9.1.6",
     "lint-staged": "15.2.10",
-    "npm-registry-fetch": "17.1.0",
+    "npm-registry-fetch": "18.0.1",
     "ora": "8.1.0",
     "semver": "7.6.3",
     "simple-git": "3.27.0",
