@@ -18,7 +18,7 @@
     "@types/npm-registry-fetch": "8.0.7",
     "@types/semver": "7.5.8",
     "figlet": "1.8.0",
-    "husky": "9.1.6",
+    "husky": "9.1.7",
     "lint-staged": "15.2.10",
     "npm-registry-fetch": "18.0.2",
     "ora": "8.1.1",
