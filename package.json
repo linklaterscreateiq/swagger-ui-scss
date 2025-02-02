@@ -21,7 +21,7 @@
     "husky": "9.1.7",
     "lint-staged": "15.4.2",
     "npm-registry-fetch": "18.0.2",
-    "ora": "8.1.1",
+    "ora": "8.2.0",
     "semver": "7.6.3",
     "simple-git": "3.27.0",
     "tsx": "4.19.2",
