@@ -31,6 +31,6 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*": ["biome check --no-errors-on-unmatched --files-ignore-unknown=true"]
+    "*": ["biome check --write --no-errors-on-unmatched --files-ignore-unknown=true"]
   }
 }
