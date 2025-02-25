@@ -17,6 +17,7 @@
     "@types/node": "22.13.4",
     "@types/npm-registry-fetch": "8.0.7",
     "@types/semver": "7.5.8",
+    "esbuild": "0.25.0",
     "figlet": "1.8.0",
     "husky": "9.1.7",
     "lint-staged": "15.4.3",
@@ -26,6 +27,11 @@
     "simple-git": "3.27.0",
     "tsx": "4.19.2",
     "typescript": "5.7.3"
+  },
+  "overrides": {
+    "tsx": {
+      "esbuild": "$esbuild"
+    }
   },
   "scripts": {
     "prepare": "husky"
