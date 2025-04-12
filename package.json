@@ -17,7 +17,7 @@
     "@types/node": "22.13.16",
     "@types/npm-registry-fetch": "8.0.7",
     "@types/semver": "7.7.0",
-    "figlet": "1.8.0",
+    "figlet": "1.8.1",
     "husky": "9.1.7",
     "lint-staged": "15.5.0",
     "npm-registry-fetch": "18.0.2",
