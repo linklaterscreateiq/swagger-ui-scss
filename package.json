@@ -11,7 +11,7 @@
   "license": "MIT",
   "main": "./index.ts",
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.0.6",
     "@tsconfig/node22": "22.0.2",
     "@types/figlet": "1.7.0",
     "@types/node": "22.15.30",
