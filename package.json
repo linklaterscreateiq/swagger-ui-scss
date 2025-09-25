@@ -19,7 +19,7 @@
     "@types/semver": "7.7.0",
     "figlet": "1.9.3",
     "husky": "9.1.7",
-    "lint-staged": "16.1.5",
+    "lint-staged": "16.2.0",
     "npm-registry-fetch": "19.0.0",
     "ora": "9.0.0",
     "semver": "7.7.2",
