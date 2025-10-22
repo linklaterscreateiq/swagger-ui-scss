@@ -1,14 +1,8 @@
-name: Trying to publish
+name: Trying to publish (dry run)
 
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * *'
-
-
-concurrency:
-  group: ci-publish
-  cancel-in-progress: true
+  pull_request_review:
+    types: [submitted, edited]
 
 env:
   FORCE_COLOR: 1
@@ -45,6 +39,6 @@ jobs:
       - name: Publish
         if: steps.patching.outcome == 'success'
         working-directory: tmp/swagger-ui-scss
-        run: npm publish --access public --provenance
+        run: npm publish --access public --provenance --dry-run
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

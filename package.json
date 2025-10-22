@@ -6,7 +6,7 @@
   "author": "Mathew Mannion <mathew.mannion@linklaters.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/linklaterscreateiq/swagger-ui-scss.git"
+    "url": "git+https://github.com/linklaterscreateiq/swagger-ui-scss.git"
   },
   "license": "MIT",
   "main": "./index.ts",
