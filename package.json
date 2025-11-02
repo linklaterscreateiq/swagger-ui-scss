@@ -23,7 +23,7 @@
     "npm-registry-fetch": "19.0.0",
     "ora": "9.0.0",
     "semver": "7.7.3",
-    "simple-git": "3.28.0",
+    "simple-git": "3.30.0",
     "typescript": "5.9.3"
   },
   "scripts": {
