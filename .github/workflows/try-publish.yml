@@ -5,13 +5,16 @@ on:
   schedule:
     - cron: '0 0 * * *'
 
-
 concurrency:
   group: ci-publish
   cancel-in-progress: true
 
 env:
   FORCE_COLOR: 1
+
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
 
 jobs:
   publish:
@@ -46,5 +49,3 @@ jobs:
         if: steps.patching.outcome == 'success'
         working-directory: tmp/swagger-ui-scss
         run: npm publish --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
