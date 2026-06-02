@@ -24,7 +24,7 @@
     "ora": "9.3.0",
     "semver": "7.7.4",
     "simple-git": "3.32.3",
-    "typescript": "5.9.3"
+    "typescript": "6.0.3"
   },
   "scripts": {
     "prepare": "husky"
