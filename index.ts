@@ -26,6 +26,8 @@ const StagedReadmePath = path.join(StagedPackagePath, ReadmeFile)
 
 const git = simpleGit()
 
+const force = process.argv.includes('--force')
+
 console.log(figlet.textSync('swagger-ui-scss'))
 
 type AsyncTask<T> = (spinner: Ora) => Promise<T>
@@ -81,11 +83,21 @@ const npmPackageVersion = await asyncTask('Get package version from npm registry
 
 await asyncTask('Checking versions', async spinner => {
   if (taggedVersion === npmPackageVersion) {
+    if (force) {
+      spinner.suffixText = `- Versions are the same, staging ${taggedVersion} anyway because --force was given`
+      return
+    }
+
     spinner.info('Versions are the same, no publishing required')
     process.exit(1)
   }
 
   if (npmPackageVersion && semver.lt(taggedVersion, npmPackageVersion)) {
+    if (force) {
+      spinner.suffixText = `- Version ${taggedVersion} is behind npm, staging it anyway because --force was given`
+      return
+    }
+
     spinner.fail('Version in the git repository is lower than the version in npm, no publishing required')
     process.exit(1)
   }

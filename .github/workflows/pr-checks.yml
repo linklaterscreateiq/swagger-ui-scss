@@ -1,0 +1,75 @@
+name: PR checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: pr-checks-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  FORCE_COLOR: 1
+
+permissions:
+  contents: read
+
+jobs:
+  static-analysis:
+    name: Static analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+          cache: npm
+          cache-dependency-path: package-lock.json
+        env:
+          FORCE_COLOR: 0
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint and format
+        run: npx biome ci .
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+  smoke-test:
+    name: Smoke test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+          cache: npm
+          cache-dependency-path: package-lock.json
+        env:
+          FORCE_COLOR: 0
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Patching
+        run: ./index.ts --force
+
+      - name: Verify the staged package
+        run: ./verify.ts
+
+      - name: Pack the staged package
+        working-directory: tmp/swagger-ui-scss
+        run: npm pack --dry-run
