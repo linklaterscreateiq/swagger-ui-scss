@@ -45,6 +45,10 @@ jobs:
         run: ./index.ts
         continue-on-error: true
 
+      - name: Verify the staged package
+        if: steps.patching.outcome == 'success'
+        run: ./verify.ts
+
       - name: Publish
         if: steps.patching.outcome == 'success'
         working-directory: tmp/swagger-ui-scss
