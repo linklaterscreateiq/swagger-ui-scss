@@ -12,7 +12,7 @@
   "main": "./index.ts",
   "devDependencies": {
     "@biomejs/biome": "2.5.8",
-    "@tsconfig/node24": "24.0.4",
+    "@tsconfig/node24": "24.0.5",
     "@types/figlet": "1.7.0",
     "@types/node": "24.13.3",
     "@types/npm-registry-fetch": "8.0.9",
