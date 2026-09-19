@@ -14,7 +14,7 @@
     "@biomejs/biome": "2.5.13",
     "@tsconfig/node24": "24.0.5",
     "@types/figlet": "1.7.0",
-    "@types/node": "24.13.4",
+    "@types/node": "24.13.5",
     "@types/npm-registry-fetch": "8.0.9",
     "@types/semver": "7.8.0",
     "figlet": "1.11.4",
